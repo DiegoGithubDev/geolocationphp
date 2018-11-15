@@ -27,4 +27,8 @@ $app->get('/cowsay', function() use($app) {
   return "<pre>".\Cowsayphp\Cow::say("Cool beans")."</pre>";
 });
 
+$app->get('/paintmapa', function() use($app) {
+  $app['monolog']->addDebug('paintmapa');
+  return $app['twig']->render('paintmapa.twig');
+});
 $app->run();
