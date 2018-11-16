@@ -65,6 +65,25 @@
         
         // Add a marker at the center of the map.
         addMarker(bangalore, map);
+        
+        // This example creates a 2-pixel-wide red polyline showing the path 
+        var flightPlanCoordinates = [
+          {lat: -17.790257, lng: -63.172175},
+          {lat: -17.791003, lng: -63.172926},
+          {lat: -17.791248, lng: -63.174417}, 
+          {lat: -17.791728, lng: -63.177614},
+        ];
+        var flightPath = new google.maps.Polyline({
+          path: flightPlanCoordinates,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+
+        flightPath.setMap(map);
+
+
       }
 
       // Adds a marker to the map.
