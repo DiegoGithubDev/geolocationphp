@@ -45,6 +45,14 @@
             infoWindow.setContent('Location found.');
             infoWindow.open(map);
             map.setCenter(pos);
+            
+            var taxiLatLng = { lat: -16.46711139738703 , lng: -66.44973364965426&2}
+            var marker = new google.maps.Marker({
+              position: taxiLatLng,
+              map: map,
+              title: 'Taxi'
+            });
+
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
