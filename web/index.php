@@ -32,6 +32,10 @@ $app->get('/paintmapa', function() use($app) {
   return $app['twig']->render('paintmapa.twig');
 });
 
+$app->get('/travelmode', function() use($app) {
+  return $app['twig']->render('travel_modes_direction.twig');
+});
+
 $dbopts = parse_url(getenv('DATABASE_URL'));
 $app->register(new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider('pdo'),
                array(
