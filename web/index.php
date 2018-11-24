@@ -36,6 +36,10 @@ $app->get('/travelmode', function() use($app) {
   return $app['twig']->render('travel_modes_direction.twig');
 });
 
+$app->get('/directionservice', function() use($app) {
+  return $app['twig']->render('directionservice.twig');
+});
+
 $dbopts = parse_url(getenv('DATABASE_URL'));
 $app->register(new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider('pdo'),
                array(
