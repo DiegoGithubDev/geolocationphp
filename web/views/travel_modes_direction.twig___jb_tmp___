@@ -84,10 +84,25 @@
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
           var mi_origin={lat:-17.7819241, lng: -63.121442};
-          var mi_des={lat:-17.7884273, lng:-63.127148};
+
+          infoWindow = new google.maps.InfoWindow;
+          var mi_pos_gps ;
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function (position) {
+                  mi_pos_gps = {
+                      lat: position.coords.latitude,
+                      lng: position.coords.longitude
+                  };
+              }, function () {
+                  handleLocationError(true, infoWindow, map.getCenter());
+              });
+          }else{
+              mi_pos_gps = {lat:-17.7834611, lng:-63.1195113};
+          }
+        var mi_des={lat:-17.7884273, lng:-63.127148};
         var selectedMode = document.getElementById('mode').value;
         directionsService.route({
-          origin:  mi_origin ,  // Haight.
+          origin:  mi_pos_gps ,  // Haight.
           destination: mi_des,  // Ocean Beach.
           // Note that Javascript allows us to access the constant
           // using square brackets and a string value as its
